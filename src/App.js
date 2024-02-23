@@ -12,11 +12,11 @@ function App() {
 
   const addTodoHandler=(e)=>{//we need a method  to send the data
     e.preventDefault() 
-    if(input.trim()){
-    dispatch(addTodo(input).trim())
+    if(input){
+    dispatch(addTodo(input))
     setInput('')
     }else{
-      alert("write todo first")
+      alert("write Something first !")
     }
   }
   return (
