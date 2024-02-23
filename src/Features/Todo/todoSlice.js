@@ -14,7 +14,7 @@ export const todoSlice = createSlice({
       // state and action compulsory --> state is used to change the initial state and action is used to send payload(data)
       const todo = {
         id: nanoid(),
-        text: action.payload,
+        text: action.payload, // coming from add to do handler from app.js
       };
       state.todos.push(todo); // after addTodo is written we push the new state to our todos[] initialstate
     },
