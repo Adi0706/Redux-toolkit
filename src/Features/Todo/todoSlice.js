@@ -23,11 +23,29 @@ export const todoSlice = createSlice({
         (item) => item.id !== action.payload // create a new array but dont include my id for the todolist
       );
     },
+    editTodo: (state, action) => {
+      // Update the todo in the array by mapping over it and modifying the matching one.
+      return {
+        ...state, // knowing the current state of our todo list 
+        todos: state.todos.map(todo => {
+          if (todo.id === action.payload.id) {
+            // If the `id` matches, update the `text`
+            return {
+              ...todo,
+              text: action.payload.text
+            };
+          } else {
+            return todo; // otherwise, return the todo item unchanged
+          }
+        })
+      };
+    },
+
   },
 });
 
 //exporting all the methods in the reducers ...
-export const {addTodo,removeTodo} = todoSlice.actions ; // we export them as actions 
+export const {addTodo,removeTodo,editTodo} = todoSlice.actions ; // we export them as actions 
 
 //exporting the entire reducer itself ...cuz this entire reducer needs to be wired up with the store.
 export default todoSlice.reducer ; 
